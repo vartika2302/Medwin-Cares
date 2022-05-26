@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./navbar.scss";
 import { Link } from "react-router-dom";
+import { Context } from "../../context/Context";
 
 const Navbar = () => {
+  const { doctor, dispatch } = useContext(Context);
+
+  const handleLogout = () => {
+    console.log("clicked")
+    dispatch({ type: "LOGOUT" });
+  };
+
   return (
     <div className="navbar">
       <div className="navbar-wrapper">
@@ -26,11 +34,20 @@ const Navbar = () => {
           <Link to="/patient/register" className="link">
             <span className="middle-item">Register a patient</span>
           </Link>
+          {doctor && (
+            <Link to="/allReports" className="link">
+              <span className="middle-item">View all reports</span>
+            </Link>
+          )}
         </div>
         <div className="right">
-          <Link to="/doctor/login">
-            <button className="nav-btn">Log in</button>
-          </Link>
+          {doctor ? (
+            <button onClick={handleLogout} className="nav-btn">Log out</button>
+          ) : (
+            <Link to="/doctor/login">
+              <button className="nav-btn">Log in</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

@@ -25,6 +25,10 @@ button {
   margin-top: 12px;
   cursor: pointer;
 }
+button:disabled{
+  cursor: not-allowed;
+  background-color: rgb(94, 154, 234);
+}
 
 .errorMsg {
   font-size: 15px;

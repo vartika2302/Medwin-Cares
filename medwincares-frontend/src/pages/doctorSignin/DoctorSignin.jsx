@@ -9,7 +9,7 @@ const DoctorSignin = () => {
   // no need to use onChange
   const doctorEmailRef = useRef();
   const passwordRef = useRef();
-  const { doctor, dispatch, isFetching } = useContext(Context);
+  const {  dispatch, isFetching } = useContext(Context);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const DoctorSignin = () => {
     }
   };
 
-  console.log(doctor);
+ 
 
   return (
     <div className="doctor-signin">
@@ -48,7 +48,7 @@ const DoctorSignin = () => {
             required
             ref={passwordRef}
           />
-          <button type="submit">LOGIN</button>
+          <button type="submit" disabled={isFetching}>LOGIN</button>
         </form>
         <p className="register-info">
           Are you new here?
