@@ -1,0 +1,50 @@
+.about {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .about-wrapper {
+    width: 74.5%;
+    display: flex;
+    flex-direction: column;
+    .about-top {
+      flex: 1;
+      margin-bottom: 1.5rem;
+      padding-top: 4rem;
+
+      h1 {
+        color: rgb(95, 95, 95);
+        span {
+          color: #2f83f1;
+        }
+      }
+      p {
+        color: grey;
+        margin-top: 1rem;
+        line-height: 2rem;
+      }
+    }
+    .about-bottom {
+      flex: 2;
+      h1 {
+        color: rgb(95, 95, 95);
+        span {
+          color: #2f83f1;
+        }
+      }
+      p {
+        color: grey;
+        margin-top: 1rem;
+        line-height: 2rem;
+      }
+      ul {
+        list-style-type: square;
+        line-height: 2rem;
+        li {
+          margin-top: 0.6rem;
+          color: gray;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}

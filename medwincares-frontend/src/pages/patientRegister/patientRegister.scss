@@ -1,0 +1,29 @@
+.patient-register {
+  background: linear-gradient(
+      to right,
+      rgba(47, 131, 241, 0.5),
+      rgba(47, 131, 241, 0.5)
+    ),
+    url("https://www.verywellhealth.com/thmb/frTQSFTVyqbE6-T1FRL0g3u0ihE=/614x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/doctor-and-nurse-talking-with-patient-in-hospital-bed-906007066-5c0fc1b84cedfd00012c9773.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  height: calc(100vh - 100px);
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .patient-register-wrapper{
+      width: 370px;
+      height: 350px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      img{
+          width: 120px;
+          height: 100px;
+          object-fit: cover;
+      }
+  }
+}

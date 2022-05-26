@@ -1,0 +1,31 @@
+.doctor-signup {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(
+      to right,
+      rgba(47, 131, 241, 0.5),
+      rgba(47, 131, 241, 0.5)
+    ),
+    url("https://image1.masterfile.com/getImage/ODU3LTAzNTU0Mjg4ZW4uMDAwMDAwMDA=AO9Mpi/857-03554288en_Masterfile.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .doctor-signup-wrapper {
+    width: 380px;
+    height: 470px;
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+     .doctor-signup-image {
+         width: 120px;
+         height: 100px;
+         object-fit: cover;
+         margin-bottom: 5px;
+     }
+  }
+}

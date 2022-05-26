@@ -1,0 +1,45 @@
+.reports {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .reports-wrapper {
+    width: 86.7%;
+    margin: 20px 5px;
+    h3 {
+      letter-spacing: 0.1rem;
+      color: rgb(34, 105, 198);
+      border-bottom: 2px solid rgba(34, 105, 198);
+    }
+    .reports-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+      width: 100%;
+      .reports-top-left {
+        label {
+          margin-right: 10px;
+        }
+        select {
+        }
+      }
+      .reports-top-right {
+        label {
+          margin-right: 10px;
+        }
+        select {
+        }
+      }
+    }
+    .reports-bottom {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+
+     
+    }
+  }
+}

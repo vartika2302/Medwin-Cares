@@ -1,0 +1,45 @@
+.create-report {
+  width: 100vw;
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h2 {
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  background: linear-gradient(
+      to right,
+      rgba(47, 131, 241, 0.5),
+      rgba(47, 131, 241, 0.5)
+    ),
+    url("https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41404-020-0589-z/MediaObjects/41404_2020_589_Fig1_HTML.jpg");
+    background-repeat: no-repeat;
+    background-size: 100vw;
+  .create-report-wrapper {
+    width: 400px;
+    height: 490px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 5px;
+    .create-report-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 450px;
+      select {
+        width: 350px;
+        height: 30px;
+        border: 2px solid rgb(34, 105, 198);
+        border-radius: 4px;
+        margin-top: 12px;
+        outline: none;
+      }
+    }
+  }
+}

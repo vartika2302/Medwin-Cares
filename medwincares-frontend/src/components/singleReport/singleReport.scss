@@ -1,0 +1,19 @@
+.report-item {
+  padding: 10px;
+  width: 400px;
+  border: 2px solid rgba(34, 105, 198);
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+
+  .report-item-row {
+    display: flex;
+    span {
+      font-size: 15px;
+      width: 150px;
+    }
+    p {
+      font-size: 14px;
+      color: rgb(101, 101, 101);
+    }
+  }
+}
