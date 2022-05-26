@@ -1,27 +1,34 @@
 .link {
-    text-decoration: none;
+  text-decoration: none;
 }
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 90%;
-    height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 90%;
+  height: 70%;
 }
-input{
-    width: 350px;
-    border: 2px solid rgb(34, 105, 198);
-    border-radius: 4px;
-    padding: 2px 4px;
-    outline: none;
-    margin-top: 12px;
+input {
+  width: 350px;
+  border: 2px solid rgb(34, 105, 198);
+  border-radius: 4px;
+  padding: 2px 4px;
+  outline: none;
+  margin-top: 12px;
 }
 button {
-    background-color: rgb(34, 105, 198);
-    border: none;
-    padding: 5px 14px;
-    color: #fff;
-    margin-top: 12px;
-    cursor: pointer;
+  background-color: rgb(34, 105, 198);
+  border: none;
+  padding: 5px 14px;
+  color: #fff;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.errorMsg {
+  font-size: 15px;
+  margin: 0.8rem 0;
+  color: rgb(34, 105, 198);
+  font-weight: 500;
 }

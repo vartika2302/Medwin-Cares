@@ -41,7 +41,7 @@ mongoose.connection.on("connected", () => {
 });
 
 //middlewares
-app.use("/doctors", doctorAuthRoute);
+app.use("/doctor", doctorAuthRoute);
 app.use("/patientauth", patientAuthRoute);
 app.use("/patients", reportsRoute);
 
