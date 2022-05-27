@@ -15,7 +15,7 @@ module.exports.createReport = async (req, res, next) => {
           reports: savedReport._id
         },
       });
-      return res.status(201).json("Report is successfully created!");
+      return res.status(201).json(savedReport);
     } catch (err) {
       return next(err);
     }

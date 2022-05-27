@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./patientInfo.scss";
 import Navbar from "../../components/navbar/Navbar";
-import {Link, useLocation} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 
 const PatientInfo = () => {
-
+  const [patient, setPatient] = useState({});
   const location = useLocation();
-  console.log()
+  const path = location.pathname.split("/")[3];
+
+  useEffect(() => {
+    const fetchPatient = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5000/patientauth/patientInfo/${path}`
+        );
+        setPatient(res.data);
+      } catch (err) {}
+    };
+    fetchPatient();
+  }, [path]);
 
   return (
     <div>
@@ -15,20 +28,24 @@ const PatientInfo = () => {
         <div className="patient-info-wrapper">
           <div className="patient-info-item">
             <span>First name: </span>
-            <p>Lalita</p>
+            <p>{patient.firstName}</p>
           </div>
           <div className="patient-info-item">
             <span>Last name: </span>
-            <p>Sharma</p>
+            <p>{patient.lastName}</p>
           </div>
           <div className="patient-info-item">
             <span>Phone number: </span>
-            <p>9876543210</p>
+            <p>{patient.phoneNo}</p>
           </div>
           <div className="patient-info-item">
-            <Link to="/patient/id/create_report"><button>CREATE A REPORT</button></Link>
-            <button>UPDATE INFO</button>
-            <button>VIEW REPORTS</button>
+            <Link to={`/patient/${path}/create_report`}>
+              <button>CREATE A REPORT</button>
+            </Link>
+            <button>UPDATE PATIENT</button>
+            <Link to="/allReports">
+              <button>VIEW REPORTS</button>
+            </Link>
           </div>
         </div>
       </div>
