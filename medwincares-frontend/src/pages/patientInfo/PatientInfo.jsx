@@ -1,9 +1,13 @@
 import React from "react";
 import "./patientInfo.scss";
 import Navbar from "../../components/navbar/Navbar";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 const PatientInfo = () => {
+
+  const location = useLocation();
+  console.log()
+
   return (
     <div>
       <Navbar />

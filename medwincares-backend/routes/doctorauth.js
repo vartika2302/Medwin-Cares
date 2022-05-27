@@ -1,12 +1,11 @@
 const express = require("express");
 const doctorsController = require("../controllers/doctorsController.js");
-const { verifyToken, verifyDoctor } = require("../utils/verifyToken.js");
 const router = express.Router();
 
 router.post("/register", doctorsController.register);
 
 router.post("/login", doctorsController.login);
-router.put("/update/:id", verifyDoctor, doctorsController.update);
+router.put("/update/:id",doctorsController.update);
 
 /* Checking for verification middlewares */
 // router.get("/checkauth", verifyToken, (req, res, next) => {

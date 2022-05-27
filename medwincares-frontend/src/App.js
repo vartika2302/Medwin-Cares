@@ -37,7 +37,7 @@ function App() {
         />
         <Route
           exact
-          path="/patient/:id"
+          path="/patients/patientInfo/:id"
           element={doctor ? <PatientInfo /> : <DoctorSignup />}
         />
         <Route

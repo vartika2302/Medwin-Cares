@@ -47,3 +47,13 @@ module.exports.getPatients = async (req, res, next) => {
     return next(err);
   }
 };
+
+// GET A SINGLE PATIENT INFO
+module.exports.getPatientInfo = async (req,res,next) =>{
+  try{
+    const patientInfo = await Patient.findById(req.params.id);
+    return res.status(200).json(patientInfo);
+  }catch(err){
+    return next(err);
+  }
+}

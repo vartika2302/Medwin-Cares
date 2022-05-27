@@ -1,8 +1,33 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import "./patientRegister.scss";
 
 const PatientRegister = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [error, setError] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(false);
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/patientauth/register",
+        {
+          firstName,
+          lastName,
+          phoneNo: phone,
+        }
+      );
+      res.data &&
+        window.location.replace(`/patients/patientInfo/${res.data._id}`);
+    } catch (err) {
+      setError(true);
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -12,10 +37,25 @@ const PatientRegister = () => {
             src="http://localhost:3000/assets/images/medwin-cares.png"
             alt="website logo"
           />
-          <form className="patient-register-form">
-            <input type="text" placeholder="First name" required />
-            <input type="text" placeholder="Last name" required />
-            <input type="text" placeholder="Phone number" required />
+          <form className="patient-register-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="First name"
+              required
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Last name"
+              required
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Phone number"
+              required
+              onChange={(e) => setPhone(e.target.value)}
+            />
             <button type="submit">REGISTER</button>
           </form>
         </div>

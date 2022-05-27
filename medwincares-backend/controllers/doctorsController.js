@@ -5,7 +5,6 @@ const { createError } = require("../utils/error");
 
 // REGISTER DOCTOR
 module.exports.register = async (req, res, next) => {
-  
   if (req.body.passcode === process.env.PASSCODE) {
     try {
       // Generating hashed password
@@ -26,8 +25,10 @@ module.exports.register = async (req, res, next) => {
     } catch (err) {
       next(err);
     }
-  }else{
-    return next(createError(401,"You are not authorized to register as doctor!"));
+  } else {
+    return next(
+      createError(401, "You are not authorized to register as doctor!")
+    );
   }
 };
 
@@ -53,23 +54,9 @@ module.exports.login = async (req, res, next) => {
       return next(createError(400, "Incorrect email or password!"));
     }
 
-    //Creating 'jsonwebtoken', send with each request to verify the identity of the user
-    const token = jwt.sign(
-      {
-        id: doctor._id,
-      },
-      process.env.JWT
-    );
-
     //We don't want to send password with our react application, so we will use destructuring.
-    const { password,passcode, ...otherInfo } = doctor._doc;
-    return res
-      .cookie("access_token", token, {
-        //Any unauthorised person will not be able to reach to this cookie.
-        httpOnly: true,
-      })
-      .status(200)
-      .json(otherInfo);
+    const { password, passcode, ...otherInfo } = doctor._doc;
+    return res.status(200).json(otherInfo);
   } catch (err) {
     next(err);
   }

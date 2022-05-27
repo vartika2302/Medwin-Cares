@@ -3,12 +3,9 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const cookieParser = require("cookie-parser");
 const doctorAuthRoute = require("./routes/doctorauth");
 const patientAuthRoute = require("./routes/patientauth");
 const reportsRoute = require("./routes/reports");
-const reportController = require("./controllers/reportController");
-const { verifyDoctor } = require("./utils/verifyToken");
 const cors = require("cors");
 const app = express();
 
@@ -16,7 +13,7 @@ dotenv.config();
 
 // middleware
 app.use(cors());
-app.use(cookieParser());
+
 app.use(express.json());
 
 
