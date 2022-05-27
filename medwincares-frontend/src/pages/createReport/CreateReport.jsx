@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./createReport.scss";
 import Navbar from "../../components/navbar/Navbar";
 import axios from "axios";

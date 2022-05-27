@@ -8,6 +8,8 @@ const PatientInfo = () => {
   const [patient, setPatient] = useState({});
   const location = useLocation();
   const path = location.pathname.split("/")[3];
+  const [updateMode, setUpdateMode] = useState(false);
+  const [phone, setPhone] = useState("");
 
   useEffect(() => {
     const fetchPatient = async () => {
@@ -16,10 +18,24 @@ const PatientInfo = () => {
           `http://localhost:5000/patientauth/patientInfo/${path}`
         );
         setPatient(res.data);
+        setPhone(res.data.phoneNo);
       } catch (err) {}
     };
     fetchPatient();
   }, [path]);
+
+  const handleUpdate = async (e) => {
+    try {
+       await axios.put(
+        `http://localhost:5000/patientauth/update/${path}`,
+        {
+          phoneNo: phone,
+        }
+      );
+
+      setUpdateMode(false);
+    } catch (err) {}
+  };
 
   return (
     <div>
@@ -36,13 +52,30 @@ const PatientInfo = () => {
           </div>
           <div className="patient-info-item">
             <span>Phone number: </span>
-            <p>{patient.phoneNo}</p>
+            {updateMode ? (
+              <input
+                type="text"
+                placeholder="Phone number"
+                value={phone}
+                required
+                autoFocus={true}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            ) : (
+              <p>{phone}</p>
+            )}
           </div>
           <div className="patient-info-item">
             <Link to={`/patient/${path}/create_report`}>
               <button>CREATE A REPORT</button>
             </Link>
-            <button>UPDATE PATIENT</button>
+            {updateMode ? (
+              <button onClick={handleUpdate}>CLICK TO UPDATE</button>
+            ) : (
+              <button onClick={(e) => setUpdateMode(true)}>
+                UPDATE PATIENT
+              </button>
+            )}
             <Link to="/allReports">
               <button>VIEW REPORTS</button>
             </Link>
