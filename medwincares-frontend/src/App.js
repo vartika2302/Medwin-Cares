@@ -11,6 +11,7 @@ import CreateReport from "./pages/createReport/CreateReport";
 import Reports from "./pages/reports/Reports";
 import { useContext } from "react";
 import { Context } from "./context/Context";
+import Setting from "./pages/setting/Setting";
 
 function App() {
   const { doctor } = useContext(Context);
@@ -38,27 +39,32 @@ function App() {
         <Route
           exact
           path="/patients/patientInfo/:id"
-          element={doctor ? <PatientInfo /> : <DoctorSignup />}
+          element={doctor ? <PatientInfo /> : <DoctorSignin />}
         />
         <Route
           exact
           path="/patient/:id/create_report"
-          element={doctor ? <CreateReport /> : <DoctorSignup />}
+          element={doctor ? <CreateReport /> : <DoctorSignin />}
         />
         <Route
           exact
           path="/allReports"
-          element={doctor ? <Reports /> : <DoctorSignup />}
+          element={doctor ? <Reports /> : <DoctorSignin />}
         />
         <Route
           exact
           path="/reports/:status"
-          element={doctor ? <Reports /> : <DoctorSignup />}
+          element={doctor ? <Reports /> : <DoctorSignin />}
         />
         <Route
           exact
           path="/reports/:phone/:nameOfPatient"
-          element={<Reports />}
+          element={doctor?<Reports />:<DoctorSignin/>}
+        />
+        <Route
+          exact
+          path="/settings/:id"
+          element={doctor ? <Setting /> : <DoctorSignin />}
         />
       </Routes>
     </BrowserRouter>

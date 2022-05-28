@@ -7,7 +7,7 @@ const Navbar = () => {
   const { doctor, dispatch } = useContext(Context);
 
   const handleLogout = () => {
-    console.log("clicked")
+    console.log("clicked");
     dispatch({ type: "LOGOUT" });
   };
 
@@ -39,10 +39,30 @@ const Navbar = () => {
               <span className="middle-item">View all reports</span>
             </Link>
           )}
+
+          <div className="middle-item" id="down-middle-item">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/892/892625.png"
+              alt="down arrow"
+              style={{
+                width: "17px",
+                height: "17px",
+                marginLeft: "4px",
+                marginBottom: "-3px",
+              }}
+            />
+            <div className="down-arrow-items" id="down">
+              <Link to={"/settings/"+doctor._id} className="link">
+                <span>Settings</span>
+              </Link>
+            </div>
+          </div>
         </div>
         <div className="right">
           {doctor ? (
-            <button onClick={handleLogout} className="nav-btn">Log out</button>
+            <button onClick={handleLogout} className="nav-btn">
+              Log out
+            </button>
           ) : (
             <Link to="/doctor/login">
               <button className="nav-btn">Log in</button>

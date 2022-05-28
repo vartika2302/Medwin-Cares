@@ -68,6 +68,10 @@ module.exports.update = async (req, res, next) => {
       const salt = bcrypt.genSaltSync(10);
       const hash = bcrypt.hashSync(req.body.password, salt);
     }
+    const phone = await Doctor.findOne({ phone: req.body.phone });
+    if (phone) {
+      return next(createError(400, "This phone number already exists!"));
+    }
     try {
       const updatedDoctor = await Doctor.findByIdAndUpdate(
         req.params.id,
@@ -76,7 +80,7 @@ module.exports.update = async (req, res, next) => {
         },
         { new: true }
       );
-      return res.status(200).json({ msg: "Profile updated successfully!" });
+      return res.status(200).json(updatedDoctor);
     } catch (err) {
       return next(err);
     }
