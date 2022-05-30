@@ -54,7 +54,7 @@ MERN project for the doctors of a Hospital which has been allocated by the govt 
 * /reports/:status → List all the reports of all the patients filtered by a specific status
 * /patients/patientInfo/:id -> Information of a particular patient, also update happens via this route
 
-### Individual pages images - 
+### Individual pages images
 
 >> Home Page
 ![Web capture_31-5-2022_21046_localhost](https://user-images.githubusercontent.com/88293497/171059592-e8f54196-7faf-4ed1-90d6-9e7ff2b7b1d6.jpeg)
