@@ -6,7 +6,7 @@
 * [Technologies Used](#technologies-used)
 * [Website Image](#website-image)
 * [Problem Statement](#problem-statement)
-* [Individual pages images](#individual-page-images)
+* [Individual pages images](#individual-pages-images)
 
 ### Origin of the name - Medwin-Cares
 The name Medwin is primarily a name of German origin that means **POWERFUL FRIEND** or a **STRONG FRIEND**. A strong friendship means that both of you are on the same 
