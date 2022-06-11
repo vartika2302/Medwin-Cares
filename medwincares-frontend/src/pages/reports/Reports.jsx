@@ -4,13 +4,15 @@ import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import SingleReport from "../../components/singleReport/SingleReport";
 import axios from "axios";
-import {  useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Reports = () => {
   const [reports, setReports] = useState([]);
   const [patients, setPatients] = useState([]);
+  const [currP, setCurrP] = useState("ALL");
   let history = useNavigate();
   const location = useLocation();
+
   const arr = [
     "Negative",
     "Travelled-Quarantine",
@@ -59,9 +61,12 @@ const Reports = () => {
     } else if (e.target.name === "patient") {
       nameOfPatient = e.target.value.split(",")[0].trim();
       value = e.target.value.split(",")[1].trim();
+      setCurrP(nameOfPatient);
+
       history(`/reports/${value}/${nameOfPatient}`);
     }
   };
+  console.log(currP);
 
   useEffect(() => {
     const fetchFilteredReports = async () => {
@@ -85,12 +90,27 @@ const Reports = () => {
     fetchFilteredReports();
   }, [location.pathname]);
 
+  const handleRefreshClick = async (e) => {
+    e.preventDefault();
+    const res = await axios.get("http://localhost:5000/patients/allReports");
+    setReports(res.data);
+    history("/allReports");
+  };
+
   return (
     <div>
       <Navbar />
       <div className="reports">
         <div className="reports-wrapper">
-          <h3>LALITA SHARMA's REPORTS</h3>
+          <h3>{currP === "ALL" ? "ALL" : currP + "'s"} REPORTS</h3>
+          <div>
+            <img
+              src="https://cdn-icons.flaticon.com/png/128/4708/premium/4708547.png?token=exp=1654979059~hmac=4e8063cf0dda06a3b133bc9594e59e89"
+              alt="refresh-icon"
+              className="refresh-icon"
+              onClick={handleRefreshClick}
+            />
+          </div>
           <div className="reports-top">
             <div className="reports-top-left">
               <label>Patient's status: </label>

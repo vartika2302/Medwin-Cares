@@ -7,17 +7,22 @@ const { createError } = require("../utils/error");
 module.exports.createReport = async (req, res, next) => {
   const patient = await Patient.findById(req.params.id);
   if (patient) {
-    try {
-      const newReport = await Report(req.body);
-      const savedReport = await newReport.save();
-      await patient.updateOne({
-        $push: {
-          reports: savedReport._id
-        },
-      });
-      return res.status(201).json(savedReport);
-    } catch (err) {
-      return next(err);
+    if (patient.phoneNo === req.body.phoneNum) {
+      try {
+        const newReport = await Report(req.body);
+        const savedReport = await newReport.save();
+       
+        return res.status(201).json(savedReport);
+      } catch (err) {
+        return next(err);
+      }
+    } else {
+      return next(
+        createError(
+          400,
+          "Phone number with which the patient is registered is entered wrong!"
+        )
+      );
     }
   } else {
     return next(
@@ -29,7 +34,7 @@ module.exports.createReport = async (req, res, next) => {
 // GET ALL REPORTS
 module.exports.reports = async (req, res, next) => {
   try {
-    const reports = await Report.find();
+    const reports = await Report.find().sort("-createdAt");
     return res.status(200).json(reports);
   } catch (err) {
     return next(err);
@@ -48,7 +53,9 @@ module.exports.allReports = async (req, res, next) => {
 
   try {
     const patient = await Patient.findOne({ phoneNo: req.params.phone });
-    const reports = await Report.find({phoneNum: patient.phoneNo});
+    const reports = await Report.find({ phoneNum: patient.phoneNo }).sort(
+      "-createdAt"
+    );
     return res.status(200).json(reports);
   } catch (err) {
     return next(err);
@@ -64,7 +71,9 @@ module.exports.statusReports = async (req, res, next) => {
   // }
 
   try {
-    const reports = await Report.find({ status: req.params.status });
+    const reports = await Report.find({ status: req.params.status }).sort(
+      "-createdAt"
+    );
     return res.status(200).json(reports);
   } catch (err) {
     next(err);

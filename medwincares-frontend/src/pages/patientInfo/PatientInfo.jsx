@@ -10,6 +10,7 @@ const PatientInfo = () => {
   const path = location.pathname.split("/")[3];
   const [updateMode, setUpdateMode] = useState(false);
   const [phone, setPhone] = useState("");
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchPatient = async () => {
@@ -25,16 +26,17 @@ const PatientInfo = () => {
   }, [path]);
 
   const handleUpdate = async (e) => {
+    e.preventDefault();
+    setError(false);
     try {
-       await axios.put(
-        `http://localhost:5000/patientauth/update/${path}`,
-        {
-          phoneNo: phone,
-        }
-      );
+      await axios.put(`http://localhost:5000/patientauth/update/${path}`, {
+        phoneNo: phone,
+      });
 
       setUpdateMode(false);
-    } catch (err) {}
+    } catch (err) {
+      setError(true);
+    }
   };
 
   return (
@@ -80,6 +82,9 @@ const PatientInfo = () => {
               <button>VIEW REPORTS</button>
             </Link>
           </div>
+          {error && (
+            <p className="errorMsg">Something went wrong! Please try again.</p>
+          )}
         </div>
       </div>
     </div>

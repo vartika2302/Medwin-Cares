@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import "./createReport.scss";
 import Navbar from "../../components/navbar/Navbar";
 import axios from "axios";
@@ -19,6 +19,7 @@ const CreateReport = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("clicked");
     try {
       const res = await axios.post(
         `http://localhost:5000/patients/${path}/create_report`,
@@ -34,8 +35,11 @@ const CreateReport = () => {
           phoneNum: phoneRef.current.value,
         }
       );
+      console.log(res.data);
       res.data && window.location.replace("/allReports");
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

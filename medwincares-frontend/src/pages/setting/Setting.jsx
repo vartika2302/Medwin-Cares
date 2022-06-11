@@ -11,8 +11,10 @@ const Setting = () => {
   const [email, setEmail] = useState(doctor.email);
   const [password, setPassword] = useState(doctor.password);
   const [phone, setPhone] = useState(doctor.phone);
+  const [error, setError] = useState(false);
 
   const handleUpdate = async () => {
+    setError(false);
     try {
       const res = await axios.put(
         `http://localhost:5000/doctor/update/${doctor._id}`,
@@ -29,7 +31,7 @@ const Setting = () => {
       setUpdateMode(false);
       console.log(res.data);
     } catch (err) {
-      console.log(err);
+      setError(true);
     }
   };
 
@@ -54,6 +56,7 @@ const Setting = () => {
                 required
                 autoFocus={true}
                 placeholder="Email"
+                className="settingInput"
               />
             ) : (
               <p>{email}</p>
@@ -68,6 +71,7 @@ const Setting = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 placeholder="Password"
+                className="settingInput"
               />
             ) : (
               <p>.......</p>
@@ -86,6 +90,7 @@ const Setting = () => {
                 onChange={(e) => setPhone(e.target.value)}
                 required
                 placeholder="Phone number"
+                className="settingInput"
               />
             ) : (
               <p>{phone}</p>
@@ -99,6 +104,9 @@ const Setting = () => {
             <button onClick={(e) => setUpdateMode(true)}>
               CLICK TO UPDATE
             </button>
+          )}
+          {error && (
+            <p className="errorMsg">Something went wrong! Please try again.</p>
           )}
         </div>
       </div>

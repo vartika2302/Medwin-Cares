@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   .patient-info-wrapper {
-    width: 400px;
+    width: 500px;
     height: 280px;
     border: 2px solid rgb(34, 105, 198);
     display: flex;
@@ -28,6 +28,9 @@
       }
       button{
           margin: 0 3px;
+      }
+      input {
+        margin-left: 1rem;
       }
     }
   }

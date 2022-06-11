@@ -23,7 +23,7 @@ module.exports.register = async (req, res, next) => {
       const savedDoctor = await newDoctor.save();
       return res.status(201).json(savedDoctor);
     } catch (err) {
-      next(err);
+      return next(err);
     }
   } else {
     return next(
@@ -50,6 +50,7 @@ module.exports.login = async (req, res, next) => {
       req.body.password,
       doctor.password
     );
+
     if (!isPasswordCorrect) {
       return next(createError(400, "Incorrect email or password!"));
     }
@@ -64,19 +65,25 @@ module.exports.login = async (req, res, next) => {
 
 module.exports.update = async (req, res, next) => {
   if (req.body.doctorId === req.params.id) {
+    let hash;
     if (req.body.password) {
       const salt = bcrypt.genSaltSync(10);
-      const hash = bcrypt.hashSync(req.body.password, salt);
+      hash = bcrypt.hashSync(req.body.password, salt);
     }
-    const phone = await Doctor.findOne({ phone: req.body.phone });
-    if (phone) {
+    const doctorExists = await Doctor.findOne({ phone: req.body.phone });
+
+    if (doctorExists && doctorExists.id !== req.params.id) {
       return next(createError(400, "This phone number already exists!"));
     }
     try {
       const updatedDoctor = await Doctor.findByIdAndUpdate(
         req.params.id,
         {
-          $set: req.body,
+          $set: {
+            email: req.body.email,
+            password: hash,
+            phone: req.body.phone,
+          },
         },
         { new: true }
       );

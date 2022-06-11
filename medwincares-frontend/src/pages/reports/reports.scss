@@ -10,6 +10,13 @@
       letter-spacing: 0.1rem;
       color: rgb(34, 105, 198);
       border-bottom: 2px solid rgba(34, 105, 198);
+      text-transform: uppercase;
+    }
+    .refresh-icon {
+      margin-top: 10px;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
     }
     .reports-top {
       display: flex;
@@ -21,15 +28,13 @@
         label {
           margin-right: 10px;
         }
-        select {
-        }
+        
       }
       .reports-top-right {
         label {
           margin-right: 10px;
         }
-        select {
-        }
+       
       }
     }
     .reports-bottom {

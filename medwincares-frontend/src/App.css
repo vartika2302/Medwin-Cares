@@ -25,14 +25,23 @@ button {
   margin-top: 12px;
   cursor: pointer;
 }
-button:disabled{
+button:disabled {
   cursor: not-allowed;
   background-color: rgb(94, 154, 234);
 }
 
 .errorMsg {
   font-size: 15px;
-  margin: 0.8rem 0;
+  margin: 1rem 0 1.5rem;
   color: rgb(34, 105, 198);
   font-weight: 500;
+}
+
+.back-btn {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  position: fixed;
+  top: 40px;
+  left: 50px;
 }

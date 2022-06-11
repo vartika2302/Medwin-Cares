@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route,Navigate } from "react-router-dom";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Guidelines from "./pages/guildlines/Guidelines";
@@ -64,7 +64,7 @@ function App() {
         <Route
           exact
           path="/settings/:id"
-          element={doctor ? <Setting /> : <DoctorSignin />}
+          element={doctor ? <Setting /> : <Navigate to="/doctor/login" />}
         />
       </Routes>
     </BrowserRouter>

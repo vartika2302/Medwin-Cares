@@ -33,7 +33,7 @@ const SingleReport = ({ report }) => {
       <div className="report-item-row">
         <span>Treatment By: </span>
         <p>
-          {report.doctor}, {report.specialization}
+          {report.doctor} 
         </p>
       </div>
       <div className="report-item-row">

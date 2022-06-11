@@ -52,7 +52,7 @@ const Navbar = () => {
               }}
             />
             <div className="down-arrow-items" id="down">
-              <Link to={"/settings/"+doctor._id} className="link">
+              <Link to={"/settings/"+doctor?._id} className="link">
                 <span>Settings</span>
               </Link>
             </div>

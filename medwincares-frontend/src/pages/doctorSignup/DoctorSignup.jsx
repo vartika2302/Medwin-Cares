@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./doctorSignup.scss";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const DoctorSignup = () => {
   const [firstName, setFirstName] = useState("");
@@ -33,6 +34,13 @@ const DoctorSignup = () => {
 
   return (
     <div className="doctor-signup">
+      <Link to="/" className="link">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/7618/7618370.png"
+          alt="back btn"
+          className="back-btn"
+        />
+      </Link>
       <div className="doctor-signup-wrapper">
         <img
           src="http://localhost:3000/assets/images/medwin-cares.png"
@@ -83,8 +91,13 @@ const DoctorSignup = () => {
             onChange={(e) => setPasscode(e.target.value)}
           />
           <button type="submit">REGISTER</button>
+          <p className="login-info">
+            Already registered? <Link to="/doctor/login"><span>Login</span></Link>
+          </p>
         </form>
-        {error && <p className="errorMsg">The email or phone is already registered!</p>} 
+        {error && (
+          <p className="errorMsg">The email or phone is already registered!</p>
+        )}
       </div>
     </div>
   );

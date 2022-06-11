@@ -57,6 +57,9 @@ const PatientRegister = () => {
               onChange={(e) => setPhone(e.target.value)}
             />
             <button type="submit">REGISTER</button>
+            {error && (
+              <p className="errorMsg">Somthing went wrong! Please try again.</p>
+            )}
           </form>
         </div>
       </div>
