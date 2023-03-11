@@ -105,7 +105,7 @@ const Reports = () => {
           <h3>{currP === "ALL" ? "ALL" : currP + "'s"} REPORTS</h3>
           <div>
             <img
-              src="https://cdn-icons.flaticon.com/png/128/4708/premium/4708547.png?token=exp=1654979059~hmac=4e8063cf0dda06a3b133bc9594e59e89"
+              src="https://icons.veryicon.com/png/o/miscellaneous/basic-monochrome-icon/refresh-149.png"
               alt="refresh-icon"
               className="refresh-icon"
               onClick={handleRefreshClick}
@@ -142,6 +142,7 @@ const Reports = () => {
             {reports.map((report) => (
               <SingleReport key={report._id} report={report} />
             ))}
+            <p className="no-results">{reports.length===0 && "No results found"}</p>
           </div>
         </div>
       </div>

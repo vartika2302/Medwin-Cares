@@ -29,7 +29,7 @@ const Footer = () => {
               <div className="ftop-left">
                 <div className="ftop-image">
                   <img
-                    src="https://cdn-icons.flaticon.com/png/128/2371/premium/2371329.png?token=exp=1653944063~hmac=14aa77c6eafe7fc8d762b569373abe3b"
+                    src="https://cdn-icons-png.flaticon.com/128/2371/2371329.png"
                     alt="medical kit"
                   />
                 </div>
@@ -43,7 +43,7 @@ const Footer = () => {
               <div className="ftop-left">
                 <div className="ftop-image">
                   <img
-                    src="https://cdn-icons.flaticon.com/png/128/5704/premium/5704257.png?token=exp=1653944094~hmac=e5302d771b8b75b6d734c052ef568090"
+                    src="https://cdn-icons-png.flaticon.com/128/2785/2785693.png"
                     alt="emergency departments"
                   />
                 </div>
@@ -73,7 +73,7 @@ const Footer = () => {
                 alt="github icon"
               />
               <img
-                src="https://cdn-icons.flaticon.com/png/128/4494/premium/4494497.png?token=exp=1653943979~hmac=65a0bd0eb2eccca7d6a9f5f3889fe8dc"
+                src="https://cdn-icons-png.flaticon.com/128/145/145807.png"
                 alt="linkedin icon"
               />
             </div>

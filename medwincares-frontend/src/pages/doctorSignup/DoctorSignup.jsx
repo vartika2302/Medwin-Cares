@@ -12,10 +12,13 @@ const DoctorSignup = () => {
   const [phone, setPhone] = useState("");
   const [passcode, setPasscode] = useState("");
   const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(false);
+    setErrorMsg("");
     try {
       const res = await axios.post("http://localhost:5000/doctor/register", {
         firstName,
@@ -28,9 +31,11 @@ const DoctorSignup = () => {
       });
       res.data && window.location.replace("/doctor/login");
     } catch (err) {
+      setErrorMsg(err.msg);
       setError(true);
     }
   };
+  console.log(errorMsg);
 
   return (
     <div className="doctor-signup">
@@ -92,7 +97,10 @@ const DoctorSignup = () => {
           />
           <button type="submit">REGISTER</button>
           <p className="login-info">
-            Already registered? <Link to="/doctor/login"><span>Login</span></Link>
+            Already registered?{" "}
+            <Link to="/doctor/login">
+              <span>Login</span>
+            </Link>
           </p>
         </form>
         {error && (
